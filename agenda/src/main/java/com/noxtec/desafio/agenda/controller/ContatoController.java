@@ -32,7 +32,7 @@ public class ContatoController {
 			String mensagem = contatoService.save(contato);
 			return new ResponseEntity<>(mensagem, HttpStatus.CREATED);
 		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -84,4 +84,10 @@ public class ContatoController {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@GetMapping("/existsByCelular/{celular}")
+    public ResponseEntity<Boolean> existsByCelular(@PathVariable String celular) {
+        boolean exists = contatoService.existsByCelular(celular);
+        return new ResponseEntity<>(exists, HttpStatus.OK);
+    }
 }

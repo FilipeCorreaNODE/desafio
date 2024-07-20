@@ -19,14 +19,14 @@ public class ContatoService {
 
 		contato.setDataHoraCadastro(new Date());
 		contatoRepository.save(contato);
-		return "Contato criado com sucesso!";
+		return contato.getNome() + " criado com sucesso!";
 	}
 
 	public String update(Contato contato, long id) {
 		contato.setId(id);
 		contato.setDataHoraCadastro(new Date());
 		contatoRepository.save(contato);
-		return "Contato atualizado com sucesso!";
+		return contato.getNome() + " atualizado com sucesso!";
 	}
 
 	public String delete(long id) {
@@ -49,5 +49,9 @@ public class ContatoService {
 		Contato contato = contatoRepository.findById(id).get();
 		return contato;
 	}
+	
+	public boolean existsByCelular(String celular) {
+        return contatoRepository.existsByCelular(celular);
+    }
 
 }
