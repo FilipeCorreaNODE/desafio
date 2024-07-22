@@ -71,7 +71,7 @@ public class ContatoServiceTest {
 		
 		String retorno = contatoService.save(contato);
 		
-		assertEquals("Contato criado com sucesso!", retorno);
+		assertEquals(contato.getNome() +" criado com sucesso!", retorno);
 	}
 
 }
